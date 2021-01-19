@@ -1,0 +1,70 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "5127c09c1a6129cb30a86e759da370f5",
+    "packages": [
+        {
+            "name": "dg/twitter-php",
+            "version": "v4.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dg/twitter-php.git",
+                "reference": "450baa2fd7b5e815c5f050b019c4486d1b1b01da"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dg/twitter-php/zipball/450baa2fd7b5e815c5f050b019c4486d1b1b01da",
+                "reference": "450baa2fd7b5e815c5f050b019c4486d1b1b01da",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=7.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                }
+            ],
+            "description": "Small and easy Twitter library for PHP",
+            "homepage": "https://github.com/dg/twitter-php",
+            "keywords": [
+                "oauth",
+                "twitter"
+            ],
+            "support": {
+                "source": "https://github.com/dg/twitter-php/tree/master"
+            },
+            "time": "2020-05-11T22:48:42+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
+}
