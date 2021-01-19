@@ -14,11 +14,11 @@
 - accessToken
 - accessTokenSecret
 
-####Renomear o arquivo config_sample.php para config.php e substituir os valores do array $config pelos valores acima.
+#### Renomear o arquivo config_sample.php para config.php e substituir os valores do array $config pelos valores acima.
 
-####Feito isso, é só dar um **composer install** na pasta raiz, no seu terminal
+#### Feito isso, é só dar um **composer install** na pasta raiz, no seu terminal
 
-####Para subir de modo desenvolvimento você poderá usar o **php -S localhost:{porta}** na pasta public e para subir para produção é só fazer seu servidor apontar a root como a pasta public.
+#### Para subir de modo desenvolvimento você poderá usar o **php -S localhost:{porta}** na pasta public e para subir para produção é só fazer seu servidor apontar a root como a pasta public.
 
-####Agradecimento a galera do chat que sempre fortalece
+#### Agradecimento a galera do chat que sempre fortalece
 
