@@ -71,7 +71,7 @@ Twitter Sorteator
 
                     <?php } ?>
 
-                    <?php if (!empty($_POST['link'])) { ?>
+                    <?php if (!empty($_POST['link']) && !empty($twitterSorteator->retweets)) { ?>
 
                         <h3 class="centeriza">
                             <?= $twitterSorteator->link ?>
@@ -120,6 +120,17 @@ Twitter Sorteator
                                 </a>
                             </div>
                         </div>
+                    <?php }
+                       else if (!empty($_POST['link']) && empty($twitterSorteator->retweets)) { ?>
+
+                    <h3 class="centeriza">
+                        <?= $twitterSorteator->link ?>
+                    </h3>
+                           <br />
+                    <h3 class="centeriza">
+                        O link digitado não é válido ou não obteve retweets.
+                    </h3>
+
                     <?php } ?>
 
                 </form>

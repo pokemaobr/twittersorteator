@@ -17,53 +17,82 @@ class TwitterSorteator
 
         $this->geraIdLink();
         $this->geraDadosPost();
+
     }
 
     private function geraIdLink()
     {
 
         preg_match('/(?<=\/status\/)(?<id>\d+)/', $this->link, $matches);
-        $this->id = $matches['id'];
+        if (!empty($matches))
+            $this->id = $matches['id'];
+
     }
 
     private function geraDadosPost()
     {
 
-        $twitter = new Twitter($this->config['consumerKey'], $this->config['consumerSecret'], $this->config['accessToken'], $this->config['accessTokenSecret']);
+        if (!empty($this->id)) {
 
-        $retweets = $twitter->request('statuses/retweets/' . $this->id, 'GET', ['count' => 100]);
-        $global = $twitter->request('search/tweets', 'GET', ['q' => $this->id, 'count' => 100])?->statuses;
 
-        foreach ($retweets as $retweet) {
+            $twitter = new Twitter($this->config['consumerKey'], $this->config['consumerSecret'], $this->config['accessToken'], $this->config['accessTokenSecret']);
 
-            if (!in_array($retweet?->user?->screen_name, $this->nomes))
-                $this->nomes[] = $retweet?->user?->screen_name;
+            try {
+                $retweets = $twitter->request('statuses/retweets/' . $this->id, 'GET', ['count' => 100]);
+            } catch (\Throwable $e) {
 
-            $this->retweets[] = $retweet?->user?->screen_name;
-        }
+            }
+            try {
+                $global = $twitter->request('search/tweets', 'GET', ['q' => $this->id, 'count' => 100])?->statuses;
+            } catch (\Throwable $e) {
 
-        foreach ($global as $retweet) {
+            }
 
-            if (!empty($retweet?->quoted_status_id) && ($retweet?->quoted_status_id == $this->id)) {
+            if (!empty($retweets)) {
+                foreach ($retweets as $retweet) {
 
-                if (!in_array($retweet?->user?->screen_name, $this->nomes))
-                    $this->nomes[] = $retweet?->user?->screen_name;
+                    if (!in_array($retweet?->user?->screen_name, $this->nomes))
+                        $this->nomes[] = $retweet?->user?->screen_name;
 
-                $this->retweetsComComentario[] = $retweet?->user?->screen_name;
+                    $this->retweets[] = $retweet?->user?->screen_name;
+                }
+
+                foreach ($global as $retweet) {
+
+                    if (!empty($retweet?->quoted_status_id) && ($retweet?->quoted_status_id == $this->id)) {
+
+                        if (!in_array($retweet?->user?->screen_name, $this->nomes))
+                            $this->nomes[] = $retweet?->user?->screen_name;
+
+                        $this->retweetsComComentario[] = $retweet?->user?->screen_name;
+                    }
+                }
+
             }
         }
+
     }
 
     public function sorteia()
     {
 
-        $chave = shuffle($this->nomes);
+        if (!empty($this->nomes)) {
 
-        return $this->nomes[$chave];
+            $chave = shuffle($this->nomes);
+
+            return $this->nomes[$chave];
+
+        }
+
+        return false;
+
     }
 
     public function nomes()
     {
+
         return $this->nomes;
+
     }
+
 }
