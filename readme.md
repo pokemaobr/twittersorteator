@@ -2,7 +2,7 @@
 
 ### Projeto em PHP de rua desenvolvido durante uma live no [https://pokemaobr.live](https://pokemaobr.live)
 
-#### TODO: Não testado corretamente para links sem ser do Twitter
+#### (FINALIZADO): Testado corretamente para links sem ser do Twitter
 
 #### Funciona apenas para tweets com até 100 retweets
 
