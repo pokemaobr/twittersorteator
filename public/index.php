@@ -11,8 +11,16 @@ if (!empty($_POST['link'])) {
 
     $twitterSorteator = new TwitterSorteator($link, $config);
 
-    $pessoaSorteada = 'https://twitter.com/' . $twitterSorteator->sorteia();
+    $userSorteado = $twitterSorteator->sorteia();
+    $pessoaSorteada = 'https://twitter.com/' . $userSorteado;
     $pessoas = $twitterSorteator->nomes();
+    $urlSorteio = urlencode("
+A conta sorteada em $link foi @$userSorteado
+
+Sorteio realizado utilizando:
+Twitter Sorteator
+");
+    $urlSorteio = "https://twitter.com/intent/tweet?text=" . $urlSorteio;
 }
 
 ?>
@@ -107,7 +115,7 @@ if (!empty($_POST['link'])) {
                         <div class="container-contact2-form-btn">
                             <div class="wrap-contact2-form-btn">
                                 <div class="contact2-form-bgbtn"></div>
-                                <a href="" id="twitter-share-btt" rel="nofollow" target="_blank" class="twitter-share-button contact2-form-btn" style="text-decoration: none;">
+                                <a href="<?= $urlSorteio ?>" id="twitter-share-btt" rel="nofollow" target="_blank" class="twitter-share-button contact2-form-btn" style="text-decoration: none;">
                                     Compartilhar no Twitter
                                 </a>
                             </div>
@@ -139,22 +147,6 @@ if (!empty($_POST['link'])) {
 
         gtag('config', 'UA-23581568-13');
     </script>
-
-    <?php if (!empty($_POST['link'])) { ?>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                var url = encodeURIComponent(window.location.href);
-                var text = encodeURIComponent(`
-A conta sorteada em <?= $link ?> foi @<?= str_replace('https://twitter.com/', '', $pessoaSorteada) ?>
-
-
-Sorteio realizado utilizando:
-`);
-
-                document.getElementById("twitter-share-btt").href = "https://twitter.com/intent/tweet?url=" + url + "&text=" + text;
-            }, false);
-        </script>
-    <?php } ?>
 </body>
 
 </html>
