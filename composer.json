@@ -1,7 +1,8 @@
 {
     "autoload": {
         "psr-4": {
-            "TwitterSorteator\\": "src/TwitterSorteator/"
+            "TwitterSorteator\\": "src/TwitterSorteator/",
+            "GeradorDesculpinhas\\": "src/GeradorDesculpinhas/"
         }
     },
 
