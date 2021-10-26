@@ -21,6 +21,8 @@ Sorteio realizado utilizando:
 Twitter Sorteator - https://github.com/pokemaobr/twittersorteator
 ");
     $urlSorteio = "https://twitter.com/intent/tweet?text=" . $urlSorteio;
+
+    $desculpinha = \GeradorDesculpinhas\GeradorDesculpinhas::getDesculpinha();
 }
 
 ?>
@@ -46,7 +48,7 @@ Twitter Sorteator - https://github.com/pokemaobr/twittersorteator
 
     <div class="bg-contact2" style="background-image: url('images/bg-01.jpg');">
         <div class="container-contact2">
-            <div class="wrap-contact2">
+            <h3 class="wrap-contact2">
                 <form class="contact2-form validate-form" action="index.php" method="POST">
                     <span class="contact2-form-title">
                         Twitter Sorteator
@@ -111,6 +113,10 @@ Twitter Sorteator - https://github.com/pokemaobr/twittersorteator
                         <h3>
                             Pessoa sorteada: <a href="<?= $pessoaSorteada ?>"><?= $pessoaSorteada ?></a>
                         </h3>
+                        <br />
+                        <h3>
+                            Desculpinha do dia: <?=  $desculpinha['texto'] ?> de autoria <?= $desculpinha['autoria'] ?>
+                        </h3>
 
                         <div class="container-contact2-form-btn">
                             <div class="wrap-contact2-form-btn">
@@ -120,6 +126,8 @@ Twitter Sorteator - https://github.com/pokemaobr/twittersorteator
                                 </a>
                             </div>
                         </div>
+
+
                     <?php }
                        else if (!empty($_POST['link']) && empty($twitterSorteator->retweets)) { ?>
 
