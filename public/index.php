@@ -18,7 +18,7 @@ if (!empty($_POST['link'])) {
 A conta sorteada em $link foi @$userSorteado
 
 Sorteio realizado utilizando:
-Twitter Sorteator
+Twitter Sorteator - https://github.com/pokemaobr/twittersorteator
 ");
     $urlSorteio = "https://twitter.com/intent/tweet?text=" . $urlSorteio;
 }
